@@ -1,4 +1,3 @@
-import React from 'react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -9,23 +8,36 @@ export default function Details() {
   let [ country, setCountry ] = useState([]);
   
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all/")
+    fetch("https://restcountries.com/v3.1/name/" + countryName)
     .then((response) => response.json())
     .then((data) => {
-        data.map( c => {
-          if (c.name.common.toLowerCase() == countryName.toLowerCase()) {
-            setCountry(c);
-          }
-        })
-      })
-  }, [])
+      if (data.status === 404) {
+        setCountry(data);
+      } else {
+        setCountry(data[0]);
+      }
+    })
+    .catch((error) => {
+      console.error('Error: ', error)
+    });
+  }, [countryName]);
 
-  if(country.length === 0) {
-    return <div>...</div>
+  while (country.length === 0) {
+    return <div className='page'>Loading...</div>
   }
+  if (country.status === 404) {
+    return (
+      <div className='page'>
+        <h1>Error 404</h1>
+        <p>Invalid request. Country not found.</p>
+        <code>
+          {JSON.stringify(country)}
+        </code>
+      </div>
+    )}
 
   return (
-    <div className='details-page'>
+    <div className='page'>
       <Link to='/' className="btn btn-primary">˂˂ Go back</Link>
       <h1>{country.name.common}</h1>
       <div className='card'>
