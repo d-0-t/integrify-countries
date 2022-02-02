@@ -1,4 +1,7 @@
-export default function Search({ keyword, handleChange }) {
+import { memo } from 'react';
+import PropTypes from 'prop-types';
+
+function Search({ keyword, handleChange }) {
   return (
     <input
       type="text"
@@ -9,3 +12,10 @@ export default function Search({ keyword, handleChange }) {
     />
   );
 }
+
+Search.propTypes = {
+  keyword: PropTypes.string,
+  handleChange: PropTypes.func.isRequired
+}
+
+export default memo(Search);

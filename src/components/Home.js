@@ -1,44 +1,23 @@
-import { useEffect, useState } from "react";
-import CountryTable from "./CountryTable";
+import { useState, useCallback } from "react";
+
+import useCountries from "../hooks/useCountries";
+import CountryTable from "./CountryTable/CountryTable";
 import Search from "./Search";
+import Title from "./Title";
 
 export default function Home() {
-  let [countries, setCountries] = useState([]);
-  let [countrySearch, setCountrySearch] = useState([]);
-  let [keyword, setKeyword] = useState();
+  let [keyword, setKeyword] = useState("");
+  let [countrySearch] = useCountries(keyword);
 
-  useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
-      .then((response) => response.json())
-      .then((data) => {
-        setCountries(data);
-        setCountrySearch(data);
-      })
-      .catch((error) => {
-        console.error("Error: ", error);
-      });
-  }, []);
-
-  const handleChange = (event) => {
+  const handleChange = useCallback((event) => {
     let newKeyword = event.target.value;
     setKeyword(newKeyword);
-    let searchedCountries = countries.filter((country) => {
-      return (
-        country.name.common.toLowerCase().search(newKeyword.toLowerCase()) !==
-        -1
-      );
-    });
-    setCountrySearch(searchedCountries);
-  };
-
-  while (countries.length === 0) {
-    return <div className="page">Loading...</div>;
-  }
+  }, []);
 
   return (
     <div className="page">
       <Search value={keyword} handleChange={handleChange} />
-      <h1>Countries</h1>
+      <Title count={countrySearch.length} />
       <CountryTable countries={countrySearch} />
     </div>
   );

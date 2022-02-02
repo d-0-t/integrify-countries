@@ -1,44 +1,30 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import useOneCountry from "../hooks/useOneCountry";
+
+import Button from "./Button";
 
 export default function Details() {
-  let { countryName } = useParams();
-  let [country, setCountry] = useState([]);
-
-  useEffect(() => {
-    fetch("https://restcountries.com/v3.1/name/" + countryName)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status === 404) {
-          setCountry(data);
-        } else {
-          setCountry(data[0]);
-        }
-      })
-      .catch((error) => {
-        console.error("Error: ", error);
-      });
-  }, [countryName]);
-
-  while (country.length === 0) {
-    return <div className="page">Loading...</div>;
-  }
-  if (country.status === 404) {
-    return (
+  
+  const { countryName } = useParams();
+  let [country] = useOneCountry(countryName);
+  
+  if (country === undefined || country.status === 404) {
+    return(
       <div className="page">
         <h1>Error 404</h1>
         <p>Invalid request. Country not found.</p>
         <code>{JSON.stringify(country)}</code>
       </div>
-    );
+    )
+  }
+
+  while (country.length === 0) {
+    return <div className="page">Loading...</div>;
   }
 
   return (
     <div className="page">
-      <Link to="/" className="btn btn-primary">
-        ˂˂ Go back
-      </Link>
+      <Button linkToPath="/" classToApply="btn btn-primary" />
       <h1>{country.name.common}</h1>
       <div className="card">
         <img
@@ -59,15 +45,16 @@ export default function Details() {
             <span className="detail__label">Languages: </span>
             <span className="detail__info">
               <ul>
-                {country.languages ? (
-                  Object.keys(country.languages).map((lang) => (
+                {
+                country.languages
+                ? Object.keys(country.languages).map((lang) => (
                     <li key={country.name.common + "-" + lang}>
                       {country.languages[lang]}
                     </li>
                   ))
-                ) : (
+                : 
                   <li key={country.name.common + "-none"}>None</li>
-                )}
+                }
               </ul>
             </span>
           </div>
@@ -75,8 +62,9 @@ export default function Details() {
             <span className="detail__label">Currency: </span>
             <span className="detail__info">
               <ul>
-                {country.currencies ? (
-                  Object.keys(country.currencies).map((currency) => (
+                {
+                country.currencies
+                ? Object.keys(country.currencies).map((currency) => (
                     <li key={country.name.common + "-" + currency}>
                       {country.currencies[currency].name +
                         " (" +
@@ -84,9 +72,8 @@ export default function Details() {
                         ")"}
                     </li>
                   ))
-                ) : (
-                  <li key={country.name.common + "-none"}>None</li>
-                )}
+                : <li key={country.name.common + "-none"}>None</li>
+                }
               </ul>
             </span>
           </div>
