@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom";
-import useOneCountry from "../hooks/useOneCountry";
+import useOneCountry from "../hooks/useOneCountry"
 
 import Button from "./Button";
+
 
 export default function Details() {
   
   const { countryName } = useParams();
+  
   let [country] = useOneCountry(countryName);
   
   if (country === undefined || country.status === 404) {
@@ -50,10 +52,8 @@ export default function Details() {
                 ? Object.keys(country.languages).map((lang) => (
                     <li key={country.name.common + "-" + lang}>
                       {country.languages[lang]}
-                    </li>
-                  ))
-                : 
-                  <li key={country.name.common + "-none"}>None</li>
+                    </li>))
+                : <li key={country.name.common + "-none"}>None</li>
                 }
               </ul>
             </span>
