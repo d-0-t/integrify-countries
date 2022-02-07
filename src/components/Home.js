@@ -4,6 +4,7 @@ import useCountries from "../hooks/useCountries";
 import CountryTable from "./CountryTable/CountryTable";
 import Search from "./Search";
 import Title from "./Title";
+import Button from "./Button";
 
 import { getKeyword } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +13,7 @@ export default function Home() {
   const dispatch = useDispatch();
   let { keyword } = useSelector((state) => state.keywordReducer);
   let [countrySearch] = useCountries(keyword);
+  let { cart } = useSelector((state) => state.cartReducer);
 
   const handleChange = useCallback(
     (event) => {
@@ -28,7 +30,10 @@ export default function Home() {
 
   return (
     <div className="page">
-      <Search value={keyword} handleChange={handleChange} />
+      <header>
+        <Search value={keyword} handleChange={handleChange} />
+        <Button linkToPath="/cart" classToApply="btn btn-primary" buttonText={"My cart (" + cart.length + ")" }/>
+      </header>
       <Title count={countrySearch.length} />
       <CountryTable countries={countrySearch} />
     </div>

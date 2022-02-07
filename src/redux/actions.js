@@ -52,3 +52,21 @@ export function fetchOneCountry(countryName) {
       });
   };
 }
+
+export function addToCart(item) {
+  return {
+    type: "ADD_TO_CART",
+    payload: {
+      item,
+    },
+  };
+}
+
+export function removeFromCart(item) {
+  return {
+    type: "REMOVE_FROM_CART",
+    payload: {
+      item,
+    },
+  };
+}

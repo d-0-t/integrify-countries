@@ -1,7 +1,24 @@
 import { memo } from 'react';
 import { Link } from "react-router-dom";
+import Button from '../Button';
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from '../../redux/actions';
 
 function CountryTableBody({countries}) {
+  const dispatch = useDispatch();
+
+  function addThisToCart(country) {
+    dispatch(addToCart(country));
+  }
+
+  const { cart } = useSelector((state) => state.cartReducer);
+  function isItDisabled(item) {
+    if (cart.filter(x => x.name.common === item.name.common).length > 0) {
+      return true
+    }
+    return false;
+  }
+
   return (
     <tbody>
       {countries.map((country) => {
@@ -35,6 +52,15 @@ function CountryTableBody({countries}) {
               }
             </td>
             <td>{country.region}</td>
+            <td className='text-center'>
+              <Button
+                linkToPath="/"
+                classToApply="btn btn-primary"
+                buttonText="Add"
+                isItDisabled={isItDisabled(country)}
+                clickFunction={() => addThisToCart(country)}
+              />
+            </td>
           </tr>
         );
       })}

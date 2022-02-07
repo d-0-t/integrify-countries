@@ -1,15 +1,30 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { memo } from "react";
 
-export default function Button({linkToPath, classToApply}) {
+function Button({
+  linkToPath,
+  classToApply,
+  buttonText,
+  isItDisabled,
+  clickFunction,
+}) {
   return (
-    <Link to={linkToPath} className={classToApply}>
-      ˂˂ Go back
+    <Link to={linkToPath}>
+      <button
+        className={classToApply}
+        onClick={clickFunction}
+        disabled={isItDisabled}
+      >
+        {buttonText}
+      </button>
     </Link>
-  )
+  );
 }
 
 Button.propTypes = {
   linkToPath: PropTypes.string.isRequired,
-  classToApply: PropTypes.string.isRequired
-}
+  classToApply: PropTypes.string.isRequired,
+};
+
+export default memo(Button);

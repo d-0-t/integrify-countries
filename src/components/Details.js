@@ -26,7 +26,7 @@ export default function Details() {
 
   return (
     <div className="page">
-      <Button linkToPath="/" classToApply="btn btn-primary" />
+      <Button linkToPath="/" classToApply="btn btn-primary" buttonText="˂˂ Go back"/>
       <h1>{country.name.common}</h1>
       <div className="card">
         <img

@@ -21,3 +21,21 @@
   height: 35px;
   margin-bottom: 5px;
 }
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+table.table-fit {
+  width: auto !important;
+  table-layout: auto !important;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
