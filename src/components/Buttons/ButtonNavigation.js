@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 
-function ButtonAnchor({
+function ButtonNavigation({
   linkToPath,
   classToApply,
   buttonText,
@@ -21,11 +21,11 @@ function ButtonAnchor({
   );
 }
 
-ButtonAnchor.propTypes = {
+ButtonNavigation.propTypes = {
   linkToPath: PropTypes.string.isRequired,
   classToApply: PropTypes.string.isRequired,
   buttonText: PropTypes.string,
   isItDisabled: PropTypes.bool
 };
 
-export default memo(ButtonAnchor);
+export default memo(ButtonNavigation);
