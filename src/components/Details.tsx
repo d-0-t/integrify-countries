@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import useOneCountry from "../hooks/useOneCountry"
-import { CountryNameType, CountryType } from "../types";
+import { CountryNameType } from "../types";
 import ButtonNavigation from "./Buttons/ButtonNavigation";
 
 export default function Details() {
