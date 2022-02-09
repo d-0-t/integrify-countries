@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Table from "react-bootstrap/Table";
 import Button from "./ButtonFunction";
 import { removeFromCart } from "../redux/actions";
-import ButtonAnchor from "./Buttons/ButtonAnchor";
+import ButtonAnchor from "./Buttons/ButtonNavigation";
 
 export default function Cart() {
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ export default function Cart() {
                 <td>
                   <b>{country.name.common}</b>
                 </td>
-                <td class="text-right">
+                <td className="text-right">
                   ${country.population / 1000} Trillion
                 </td>
                 <td>

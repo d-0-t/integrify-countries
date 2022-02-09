@@ -4,8 +4,7 @@ import useCountries from "../hooks/useCountries";
 import CountryTable from "./CountryTable/CountryTable";
 import Search from "./Search";
 import Title from "./Title";
-import Button from "./ButtonFunction";
-import ButtonAnchor from "./Buttons/ButtonAnchor";
+import ButtonAnchor from "./Buttons/ButtonNavigation";
 
 import { getKeyword } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
