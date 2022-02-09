@@ -1,7 +1,8 @@
 import { useParams } from "react-router-dom";
 import useOneCountry from "../hooks/useOneCountry"
 
-import Button from "./Button";
+import Button from "./ButtonFunction";
+import ButtonAnchor from "./Buttons/ButtonAnchor";
 
 
 export default function Details() {
@@ -26,7 +27,7 @@ export default function Details() {
 
   return (
     <div className="page">
-      <Button linkToPath="/" classToApply="btn btn-primary" buttonText="˂˂ Go back"/>
+      <ButtonAnchor linkToPath="/" classToApply="btn btn-primary" buttonText="˂˂ Go back"/>
       <h1>{country.name.common}</h1>
       <div className="card">
         <img

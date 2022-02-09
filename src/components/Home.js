@@ -4,7 +4,8 @@ import useCountries from "../hooks/useCountries";
 import CountryTable from "./CountryTable/CountryTable";
 import Search from "./Search";
 import Title from "./Title";
-import Button from "./Button";
+import Button from "./ButtonFunction";
+import ButtonAnchor from "./Buttons/ButtonAnchor";
 
 import { getKeyword } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
@@ -32,7 +33,7 @@ export default function Home() {
     <div className="page">
       <header>
         <Search value={keyword} handleChange={handleChange} />
-        <Button linkToPath="/cart" classToApply="btn btn-primary" buttonText={"My cart (" + cart.length + ")" }/>
+        <ButtonAnchor linkToPath="/cart" classToApply="btn btn-primary" buttonText={"My cart (" + cart.length + ")" }/>
       </header>
       <Title count={countrySearch.length} />
       <CountryTable countries={countrySearch} />

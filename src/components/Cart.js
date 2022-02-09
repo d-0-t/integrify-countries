@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 
 import Table from "react-bootstrap/Table";
-import Button from "./Button";
+import Button from "./ButtonFunction";
 import { removeFromCart } from "../redux/actions";
+import ButtonAnchor from "./Buttons/ButtonAnchor";
 
 export default function Cart() {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ export default function Cart() {
 
   return (
     <div className="page">
-      <Button
+      <ButtonAnchor
         linkToPath="/"
         classToApply="btn btn-primary"
         buttonText="˂˂ Go back"

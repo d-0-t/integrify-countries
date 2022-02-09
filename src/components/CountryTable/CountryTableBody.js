@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { Link } from "react-router-dom";
-import Button from '../Button';
+import Button from '../ButtonFunction';
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from '../../redux/actions';
 

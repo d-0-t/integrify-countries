@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { memo } from "react";
 
@@ -9,22 +8,24 @@ function Button({
   isItDisabled,
   clickFunction,
 }) {
+
   return (
-    <Link to={linkToPath}>
-      <button
-        className={classToApply}
-        onClick={clickFunction}
-        disabled={isItDisabled}
-      >
-        {buttonText}
-      </button>
-    </Link>
+    <button
+      className={classToApply}
+      onClick={clickFunction}
+      disabled={isItDisabled}
+    >
+      {buttonText}
+    </button>
   );
 }
 
 Button.propTypes = {
   linkToPath: PropTypes.string.isRequired,
   classToApply: PropTypes.string.isRequired,
+  buttonText: PropTypes.string,
+  isItDisabled: PropTypes.bool,
+  clickFunction: PropTypes.func
 };
 
 export default memo(Button);
