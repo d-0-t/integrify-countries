@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ButtonFunction from '../Buttons/ButtonFunction';
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from '../../redux/actions';
-import { CountriesType, CountryType, StateType } from '../../types';
+import { CountriesType, CountryType, RootState } from '../../types';
 
 function CountryTableBody({countries}: CountriesType) {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ function CountryTableBody({countries}: CountriesType) {
     dispatch(addToCart(country));
   }
 
-  const { cart } = useSelector((state: StateType) => state.cartReducer);
+  const { cart } = useSelector((state: RootState) => state.cartReducer);
   function isItDisabled(item: CountryType) {
     if (cart.filter((x: CountryType) => x.name.common === item.name.common).length > 0) {
       return true

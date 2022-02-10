@@ -1,7 +1,14 @@
-const initialState = {
+import { ActionsType, CountryType } from "../../types";
+
+type InitialCartState = {
+  cart: CountryType[];
+};
+
+const initialState: InitialCartState = {
   cart: [],
 };
-export function cartReducer(state = initialState, action) {
+
+export function cartReducer(state = initialState, action: ActionsType): InitialCartState {
   switch (action.type) {
     case "ADD_TO_CART":
       return {

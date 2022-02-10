@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 
 import { fetchCountries } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { CountryType, KeywordType, StateType } from "../types";
+import { CountryType, KeywordType, RootState } from "../types";
 
 export default function useCountries(keyword: KeywordType) {
   const dispatch = useDispatch();
   const { countries } = useSelector(
-    (state: StateType) => state.countriesReducer
+    (state: RootState) => state.countriesReducer
   );
 
   useEffect(() => {

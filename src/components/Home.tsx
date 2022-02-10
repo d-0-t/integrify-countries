@@ -8,14 +8,13 @@ import ButtonNavigation from "./Buttons/ButtonNavigation";
 
 import { getKeyword } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-
-import { StateType } from '../types';
+import { RootState } from "../types";
 
 export default function Home() {
   const dispatch = useDispatch();
-  let { keyword } = useSelector((state: StateType) => state.keywordReducer);
+  let { keyword } = useSelector((state: RootState) => state.keywordReducer);
   let [countrySearch] = useCountries(keyword);
-  let { cart } = useSelector((state: StateType) => state.cartReducer);
+  let { cart } = useSelector((state: RootState) => state.cartReducer);
 
   const handleChange = useCallback(
     (event) => {

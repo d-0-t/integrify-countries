@@ -4,11 +4,11 @@ import Table from "react-bootstrap/Table";
 import ButtonFunction from "./Buttons/ButtonFunction";
 import { removeFromCart } from "../redux/actions";
 import ButtonNavigation from "./Buttons/ButtonNavigation";
-import { CountryType, StateType } from "../types";
+import { CountryType, RootState } from "../types";
 
 export default function Cart() {
   const dispatch = useDispatch();
-  let { cart } = useSelector((state: StateType) => state.cartReducer);
+  let { cart } = useSelector((state: RootState) => state.cartReducer);
 
   function removeThisFromCart(country: CountryType) {
     dispatch(removeFromCart(country));

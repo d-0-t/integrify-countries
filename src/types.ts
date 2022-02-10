@@ -2,6 +2,8 @@
 /* COUNTRIES */
 ///////////////
 
+import rootReducer from "./redux/reducer";
+
 export type CountriesType = {
   countries: CountryType[];
 };
@@ -65,6 +67,50 @@ export type CountryNameType = {
 /* REDUX */
 ///////////
 
-export type StateType = {
+export type KeyValueAnyType = {
   [key: string]: any;
 };
+
+export type AddToCartType = {
+  type: "ADD_TO_CART";
+  payload: {
+    item: CountryType;
+  };
+};
+
+export type RemoveFromCartType = {
+  type: "REMOVE_FROM_CART";
+  payload: {
+    item: CountryType;
+  };
+};
+
+export type GetCountriesType = {
+  type: "GET_COUNTRIES";
+  payload: {
+    countries: CountriesType;
+  };
+};
+
+export type GetKeywordType = {
+  type: "GET_KEYWORD";
+  payload: {
+    keyword: string;
+  };
+};
+
+export type GetOneCountryType = {
+  type: "GET_ONE_COUNTRY";
+  payload: {
+    country: CountryType;
+  };
+};
+
+export type ActionsType =
+  | GetKeywordType
+  | GetCountriesType
+  | GetOneCountryType
+  | AddToCartType
+  | RemoveFromCartType;
+
+export type RootState = ReturnType<typeof rootReducer>;

@@ -1,23 +1,34 @@
 import {
+  AddToCartType,
   CountriesType,
   CountryNameType,
   CountryType,
+  GetCountriesType,
+  GetKeywordType,
+  GetOneCountryType,
   KeywordType,
-  StateType,
+  RemoveFromCartType,
 } from "../types";
+import { Dispatch } from "redux";
 
-export function getKeyword(keyword: KeywordType) {
+const GET_KEYWORD = "GET_KEYWORD";
+const GET_COUNTRIES = "GET_COUNTRIES";
+const GET_ONE_COUNTRY = "GET_ONE_COUNTRY";
+const ADD_TO_CART = "ADD_TO_CART";
+const REMOVE_FROM_CART = "REMOVE_FROM_CART";
+
+export function getKeyword(keyword: KeywordType): GetKeywordType {
   return {
-    type: "GET_KEYWORD",
+    type: GET_KEYWORD,
     payload: {
       keyword,
     },
   };
 }
 
-export function getCountries(countries: CountriesType) {
+export function getCountries(countries: CountriesType): GetCountriesType {
   return {
-    type: "GET_COUNTRIES",
+    type: GET_COUNTRIES,
     payload: {
       countries,
     },
@@ -25,7 +36,7 @@ export function getCountries(countries: CountriesType) {
 }
 
 export function fetchCountries() {
-  return (dispatch: (arg: StateType) => void) => {
+  return (dispatch: Dispatch) => {
     fetch("https://restcountries.com/v3.1/all")
       .then((response) => response.json())
       .then((data) => dispatch(getCountries(data)))
@@ -35,9 +46,9 @@ export function fetchCountries() {
   };
 }
 
-export function getOneCountry(country: CountryType) {
+export function getOneCountry(country: CountryType): GetOneCountryType {
   return {
-    type: "GET_ONE_COUNTRY",
+    type: GET_ONE_COUNTRY,
     payload: {
       country,
     },
@@ -45,7 +56,7 @@ export function getOneCountry(country: CountryType) {
 }
 
 export function fetchOneCountry(countryName: CountryNameType) {
-  return (dispatch: (arg: StateType) => void) => {
+  return (dispatch: Dispatch) => {
     fetch("https://restcountries.com/v3.1/name/" + countryName)
       .then((response) => response.json())
       .then((data) => {
@@ -61,18 +72,18 @@ export function fetchOneCountry(countryName: CountryNameType) {
   };
 }
 
-export function addToCart(item: CountryType) {
+export function addToCart(item: CountryType): AddToCartType {
   return {
-    type: "ADD_TO_CART",
+    type: ADD_TO_CART,
     payload: {
       item,
     },
   };
 }
 
-export function removeFromCart(item: CountryType) {
+export function removeFromCart(item: CountryType): RemoveFromCartType {
   return {
-    type: "REMOVE_FROM_CART",
+    type: REMOVE_FROM_CART,
     payload: {
       item,
     },
