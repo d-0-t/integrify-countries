@@ -1,13 +1,27 @@
-# React assignment
+# Country Search
 
-Work individually to finish this assignment. You can ask for help from your pair mate, other class mates or instructors
+### Check out the [LIVE DEMO](https://d-0-t-country-search.netlify.app/)! ❤️
 
-## Assignment
+### Three GitHub branches
+- State handling with useState()
+- State handling with Redux
+- Converted project to TypeScript
+
+### Utilized features:
+- [RestCountries](https://restcountries.com/#api-endpoints-v3-name) API fetching
+- React.js framework
+- State handling with Redux (and previously useState)
+- Late TypeScript conversion of existing project
+- Implementation of functional components
+- Bug/crash fixes
+- Performance optimization (prevent rerender)
+- "Cart" functionality (a bit nonsense in this context, but it was a requirement, see proper context in my [Fake Store](https://github.com/d-0-t/integrify-webstore) project)
+
+
+## Original React assignment instructions (from Integrify)
 
 Do the assignment as shown in the demo. reference the below image for design.
-
 Also create a functional search bar, which will search for the countries.
-
 
 ![Screenshot 2021-04-07 at 12 26 28 (3)](https://user-images.githubusercontent.com/7606310/113845648-67fa0e80-979e-11eb-92e0-3bab60c66c5d.png)
 
