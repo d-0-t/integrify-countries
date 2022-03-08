@@ -2,10 +2,10 @@
 
 ### Check out the [LIVE DEMO](https://d-0-t-country-search.netlify.app/)! ❤️
 
-### Three GitHub branches
-- State handling with useState()
-- State handling with Redux
-- Converted project to TypeScript
+## Three GitHub branches (PLEASE SWITCH!)
+- [State handling with **useState()**](https://github.com/d-0-t/integrify-countries/tree/master)
+- [State handling with **Redux**](https://github.com/d-0-t/integrify-countries/tree/redux)
+- [Converted project to **TypeScript**](https://github.com/d-0-t/integrify-countries/tree/typescript)
 
 ### Utilized features:
 - [RestCountries](https://restcountries.com/#api-endpoints-v3-name) API fetching
